@@ -67,4 +67,4 @@ Thumbs.db
 
 # Cache
 .cache/
-.parcel-cache/
+.parcel-cache/ 

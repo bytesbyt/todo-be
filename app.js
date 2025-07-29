@@ -13,8 +13,10 @@ app.use(cors());
 app.use('/api', indexRouter);
 const mongoURI = MONGODB_URI_PROD;
 
-mongoose.connect(mongoURI)
-    .then(() => console.log('Connected to MongoDB'))
+mongoose.connect(mongoURI, {
+    dbName: 'todo_db'
+})
+    .then(() => console.log('Connected to MongoDB - todo_db database'))
     .catch((err) => console.error('MongoDB connection error:', err));
 
 app.listen(process.env.PORT || 5001, () => console.log('Server is running on port 5001'));

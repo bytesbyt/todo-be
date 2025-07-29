@@ -7,7 +7,7 @@ const userController = {}
 userController.createUser = async (req, res) => {   
     try {
         const {name, email, password} = req.body;
-        const user = await User.findOne({email}, "-createdAt updatedAt -__v");
+        const user = await User.findOne({email}, "-createdAt -updatedAt -__v");
         if (user) {
             throw new Error('User already exists');
         }
@@ -34,7 +34,7 @@ userController.loginWithEmail = async (req, res) => {
         }
         throw new Error('Invalid email or password');
     } catch (error) {
-        res.status(400).json({status:"fail", error});
+        res.status(400).json({status:"fail", message: error.message});
     }
 }
 
